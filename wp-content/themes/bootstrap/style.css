@@ -1,35 +1,163 @@
 /*
-Theme Name: UnderStrap
-Theme URI: http://understrap.com
-Author: Holger Koenemann
-Author URI: http://www.holgerkoenemann.de
-Description: Combination of Automattic´s _s theme and Bootstrap 4. Made as a solid starting point for your next theme project and WordPress website. Use it as starter theme or as a parent theme. It is up to you. Including Font Awesome support, built-in widget slider and much more you need for basic websites. IMPORTANT: All developer dependencies are not bundled with this install file. Just download the .zip, extract it and run "npm install" and "gulp copy-assets" inside the extracted /understrap folder. 
-That downloads everything and moves it in place so that you can recompile your CSS and JS files;
-A developer version (with Gulp/node and Sass sources) is available on gitHub: https://github.com/holger1411/understrap
-A child theme is available on Github, too: https://github.com/holger1411/understrap-child;
-Version: 0.5.7
+Theme Name: Bootstrap
+Theme URI: http://bootstrap.com
+Author: Dubzz Digital Marketing
+Author URI: Dubzz.co.nz
+Description: Bootstrap 3 theme
+Version: 0.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: understrap
-Tags: one-column, custom-menu, featured-images, theme-options, translation-ready
+Tags: mobile-first, basic, grid, bootstrap
+Text Domain: dubzz.co.nz
 
-This theme, like WordPress, is licensed under the GPL.
-UnderStrap is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
 
-Resource Licenses:
-Font Awesome: http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
-Bootstrap: http://getbootstrap.com | https://github.com/twbs/bootstrap/blob/master/LICENSE (Code licensed under MIT, documentation under CC BY 3.0.)
-Owl Carousel 2: http://www.owlcarousel.owlgraphic.com/ | https://github.com/smashingboxes/OwlCarousel2/blob/develop/LICENSE (Code licensed under MIT)
-and of course
-jQuery: https://jquery.org | (Code licensed under MIT)
-WP Bootstrap Navwalker by Edward McIntyre: https://github.com/twittem/wp-bootstrap-navwalker | GNU GPL
 */
 
 /*
-This file is just used to identify the theme in WordPress.
-The compiled CSS output can be found in /css/theme.css
-The SASS sources for it can be found in /sass/
-The dependencies can be found in /src/ after running "gulp copy-assets" terminal command
-
-...and now go out and play!
+Max content widths
 */
+img,
+.size-auto, 
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+    max-width: 100%;
+    height: auto
+}
+
+a:focus {
+    outline: none;
+}
+
+.padding {
+  padding: 40px 0;
+}
+
+wpcf7-form {
+  text-align: center;
+}
+
+form label {
+    width: 80%;
+    text-align: left;
+}
+
+.home h2 {
+  padding-bottom: 20px;
+}
+
+
+
+
+
+/*
+Header logo
+If you require a Site title and a logo, an example of how to do this is provided below (use your own logo):
+
+#site-title a {
+  display: inline-block;
+    padding-left 60px;
+  background: url(../img/logo.png) 0 0 no-repeat;
+}
+*/
+
+.nav > li > a,
+.container .navbar-brand {
+    color: #c9bcbc;
+}
+
+.nav > li > a:focus,
+.nav > li > a:hover,
+.container .navbar-brand:hover {
+    color: #fff;
+}
+
+
+
+/* home */
+
+.rounded-circle {
+  border-radius: 50%;
+  background: black;
+}
+
+.contact-container {
+  background: url(http://www.apimages.com/Images/AP970870282113.jpg) no-repeat;
+  background-size: auto auto;
+  background-size: cover;
+  color: #fff;
+}
+
+
+
+/* temp */
+
+.navbar-fixed-top {
+    top: 32px !important;
+
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    background-color: unset;
+}
+
+
+/*
+Main content
+*/
+
+#content article {
+  margin-bottom: 40px
+}
+#content header {
+  margin: 20px 0
+}
+#content section {
+  margin-bottom: 20px
+}
+#content footer {
+  padding-bottom: 20px
+}
+
+/*
+Sidebar
+*/
+
+.sidebar {
+  margin-top: 20px
+}
+.sidebar section {
+  margin-bottom: 40px
+}
+.sidebar ul,
+.sidebar ol {
+  list-style-type: none;
+  padding: 0
+}
+.sidebar li {
+  margin: 10px 0
+}
+
+/*
+Hide form placeholders on focus
+*/
+
+input:focus::-webkit-input-placeholder { color: transparent; }
+input:focus:-moz-placeholder { color: transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color: transparent; } /* FF 19+ */
+textarea:focus::-webkit-input-placeholder { color: transparent; }
+textarea:focus:-moz-placeholder { color: transparent; } /* FF 4-18 */
+textarea:focus::-moz-placeholder { color: transparent; } /* FF 19+ */ 
+
+
+
+/*
+Site footer
+*/
+
+footer {
+  background: #333;
+  color: #fff;
+}

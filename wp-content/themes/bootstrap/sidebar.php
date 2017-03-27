@@ -1,17 +1,4 @@
-<?php
-/**
- * The sidebar containing the main widget area.
- *
- * @package understrap
- */
-
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	return;
-}
-?>
-
-<div class="col-md-4 widget-area" id="secondary" role="complementary">
-
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
-
-</div><!-- #secondary -->
+<?php if ( ! dynamic_sidebar( 'page' ) ): ?>
+	<h3>Widget Setup</h3>
+	<p>Please add widgets to the page widget to have them display here</p>
+<?php endif; ?>

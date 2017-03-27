@@ -1,52 +1,29 @@
-<?php
-/**
- * The template for displaying the footer.
- *
- * Contains the closing of the #content div and all content after
- *
- * @package understrap
- */
+<footer class="container-fluid site-footer">
+  <div class="container">
 
-$the_theme = wp_get_theme();
-$container = get_theme_mod( 'understrap_container_type' );
-?>
+    <div class="col-md-4">
+      <h3>heading</h3>
+      <p>Because the child div's height and width are set less than the height and width of the parent div this positioning is impossible</p>
+    </div>
+    
+    <div class="col-md-4">
+      <h3>heading</h3>
+      <p>Because the child div's height and width are set less than the height and width of the parent div this positioning is impossible</p>
+    </div>
+    
+    <div class="col-md-4">
+      <h3>heading</h3>
+      <p>Because the child div's height and width are set less than the height and width of the parent div this positioning is impossible</p>
+    </div>
 
-<?php get_sidebar( 'footerfull' ); ?>
-
-<div class="wrapper" id="wrapper-footer">
-
-	<div class="<?php echo esc_html( $container ); ?>">
-
-		<div class="row">
-
-			<div class="col-md-12">
-
-				<footer class="site-footer" id="colophon">
-
-					<div class="site-info">
-						<a href="<?php echo esc_url( __( 'http://wordpress.org/','understrap' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'understrap' ),'WordPress' ); ?></a>
-						<span class="sep"> | </span>
-						<?php printf( // WPCS: XSS ok.
-							esc_html__( 'Theme: %1$s by %2$s.', 'understrap' ), $the_theme->get( 'Name' ),
-						'<a href="http://understrap.com/">understrap.com</a>' ); ?>
-						(<?php printf( // WPCS: XSS ok.
-							esc_html__( 'Version: %1$s', 'understrap' ), $the_theme->get( 'Version' ) ); ?>)
-					</div><!-- .site-info -->
-
-				</footer><!-- #colophon -->
-
-			</div><!--col end -->
-
-		</div><!-- row end -->
-
-	</div><!-- container end -->
-
-</div><!-- wrapper end -->
-
-</div><!-- #page -->
+    <div class="row">
+      <div class="text-center">
+        <a  target="_blank" href="<?php echo get_bloginfo('url'); ?>"> <?php echo get_bloginfo( ); ?> </a> © 2017
+      </div>
+    </div>
+  </div>
+</footer>
 
 <?php wp_footer(); ?>
-
 </body>
-
 </html>

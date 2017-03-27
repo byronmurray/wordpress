@@ -1,79 +1,40 @@
-<?php
-/**
- * The main template file.
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
- * @package understrap
- */
+<?php get_header(); ?>
 
-get_header();
+  <div class="container">
 
-$container   = get_theme_mod( 'understrap_container_type' );
-$sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
-?>
+    <div class="row">
+      
+      <div class="col-md-9">
 
-<?php if ( is_front_page() && is_home() ) : ?>
-	<?php get_template_part( 'global-templates/hero', 'none' ); ?>
-<?php endif; ?>
+        <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-<div class="wrapper" id="wrapper-index">
+          <div class="page-header">
+            <h1><?php the_title(); ?></h1>
+          </div>
 
-	<div class="<?php echo esc_html( $container ); ?>" id="content" tabindex="-1">
+          <?php the_content(); ?>
 
-		<div class="row">
+        <?php endwhile; else: ?>
+          
+          <div class="page-header">
+            <h1>Oh no!</h1>
+          </div>
 
-			<!-- Do the left sidebar check and opens the primary div -->
-			<?php get_template_part( 'global-templates/left-sidebar-check', 'none' ); ?>
+          <p>No content is appearing for this page!</p>
 
-			<main class="site-main" id="main">
+        <?php endif; ?>
 
-				<?php if ( have_posts() ) : ?>
 
-					<?php /* Start the Loop */ ?>
+      </div>
 
-					<?php while ( have_posts() ) : the_post(); ?>
+      <div class="col-md-3 sidebar">
+      
+        <?php get_sidebar(); ?>
 
-						<?php
+      </div>
 
-						/*
-						 * Include the Post-Format-specific template for the content.
-						 * If you want to override this in a child theme, then include a file
-						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-						 */
-						get_template_part( 'loop-templates/content', get_post_format() );
-						?>
+    </div>
 
-					<?php endwhile; ?>
-
-				<?php else : ?>
-
-					<?php get_template_part( 'loop-templates/content', 'none' ); ?>
-
-				<?php endif; ?>
-
-			</main><!-- #main -->
-
-			<!-- The pagination component -->
-			<?php understrap_pagination(); ?>
-
-		</div><!-- #primary -->
-
-		<!-- Do the right sidebar check -->
-		<?php if ( 'right' === $sidebar_pos || 'both' === $sidebar_pos ) : ?>
-
-			<?php get_sidebar( 'right' ); ?>
-
-		<?php endif; ?>
-
-	</div><!-- .row -->
-
-</div><!-- Container end -->
-
-</div><!-- Wrapper end -->
+  </div>
 
 <?php get_footer(); ?>

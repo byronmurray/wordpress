@@ -1,74 +1,51 @@
-<?php
-/**
- * The template for displaying search results pages.
- *
- * @package understrap
- */
+<?php get_header(); ?>
 
-get_header();
+  <!-- hero image _get from page featured image -->
+  <div class="page--header-image" style="background-image: url(http://dubzzprojects.co.nz/jpc/wp-content/uploads/2017/03/JPC-2017-02-15-Mass_1398.jpg);"></div>
+  
+  <div class="page-header">
 
-$container   = get_theme_mod( 'understrap_container_type' );
-$sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
-?>
+    <div class="container"> 
+      <h1>Search Results</h1>
+    </div>
 
-<div class="wrapper" id="search-wrapper">
+  </div>
 
-	<div class="<?php echo esc_html( $container ); ?>" id="content" tabindex="-1">
+  <div class="container">
 
-		<div class="row">
+    <div class="row">
+      
+      <div class="col-md-9">
 
-			<!-- Do the left sidebar check and opens the primary div -->
-			<?php get_template_part( 'global-templates/left-sidebar-check', 'none' ); ?>
+        <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-			<main class="site-main" id="main">
+          <a href="<?php the_permalink(); ?>"><h2><?php the_title(); ?></h2></a>
 
-				<?php if ( have_posts() ) : ?>
+          <?php the_excerpt(); ?>
 
-					<header class="page-header">
+          <hr>
 
-						<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'understrap' ),
-						'<span>' . get_search_query() . '</span>' ); ?></h1>
+        <?php endwhile; else: ?>
+          
+          <div class="page-header">
+            <h1>Oh no!</h1>
+          </div>
 
-					</header><!-- .page-header -->
+          <p>No content is appearing for this page!</p>
 
-					<?php /* Start the Loop */ ?>
-					<?php while ( have_posts() ) : the_post(); ?>
+        <?php endif; ?>
 
-						<?php
-						/**
-						 * Run the loop for the search to output the results.
-						 * If you want to overload this in a child theme then include a file
-						 * called content-search.php and that will be used instead.
-						 */
-						get_template_part( 'loop-templates/content', 'search' );
-						?>
 
-					<?php endwhile; ?>
+      </div>
 
-				<?php else : ?>
+      <div class="col-md-3 sidebar">
+      
+        <?php get_sidebar(); ?>
 
-					<?php get_template_part( 'loop-templates/content', 'none' ); ?>
+      </div>
 
-				<?php endif; ?>
+    </div>
 
-			</main><!-- #main -->
-
-			<!-- The pagination component -->
-			<?php understrap_pagination(); ?>
-
-		</div><!-- #primary -->
-
-		<!-- Do the right sidebar check -->
-		<?php if ( 'right' === $sidebar_pos || 'both' === $sidebar_pos ) : ?>
-
-			<?php get_sidebar( 'right' ); ?>
-
-		<?php endif; ?>
-
-	</div><!-- .row -->
-
-</div><!-- Container end -->
-
-</div><!-- Wrapper end -->
+  </div>
 
 <?php get_footer(); ?>
